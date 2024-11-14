@@ -93,7 +93,7 @@ const ellipsis = computed(() => {
 
     &__cover {
       width: auto;
-      height: 300px;
+      height: 320px;
       max-width: 100%;
       object-fit: cover;
       border-radius: $border-radius;

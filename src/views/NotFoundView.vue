@@ -27,7 +27,7 @@ const goBackHome = () => {
 .not-found {
   display: flex;
   flex-flow: column;
-  row-gap: 30px;
+  row-gap: 32px;
 
   &__header {
     @include hero;

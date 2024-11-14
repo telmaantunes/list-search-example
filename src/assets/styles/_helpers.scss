@@ -12,7 +12,7 @@ $base-index: 1;
 @mixin layout() {
   position: relative;
   width: 100%;
-  padding: 30px 128px;
+  padding: 32px 128px;
   margin: 0 auto;
   background: color('background');
   height: 100%;
@@ -21,10 +21,10 @@ $base-index: 1;
   > * {
     @include card;
 
-    max-width: 1300px;
+    max-width: 1320px;
     width: 100%;
     display: flex;
-    padding: 30px;
+    padding: 32px;
     flex-flow: column wrap;
     font-size: font-size('body');
     background: color('white');
@@ -32,11 +32,11 @@ $base-index: 1;
   }
 
   @include media('>=tablet', '<laptop') {
-    padding: 0 48px 30px;
+    padding: 0 48px 32px;
   }
 
   @include media('<tablet') {
-    padding: 0 24px 30px;
+    padding: 0 24px 32px;
     max-width: 100vw;
   }
 }

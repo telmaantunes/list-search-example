@@ -67,8 +67,8 @@ const visibleBooks = computed(() => {
   &__container {
     display: flex;
     flex-flow: row;
-    column-gap: 30px;
-    padding: 30px 0;
+    column-gap: 32px;
+    padding: 32px 0;
 
     .book-item {
       width: 33%;

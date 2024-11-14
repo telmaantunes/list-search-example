@@ -1,6 +1,6 @@
 @use 'sass:map';
 
-@import 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,320..800;1,320..800&display=swap';
 @import 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap';
 
 $font-size: (
@@ -60,6 +60,19 @@ $font-size: (
 }
 
 @mixin title($color: color('black')) {
+  @include font('Montserrat');
+
+  color: $color;
+  font-weight: 800;
+  font-size: font-size('medium');
+  line-height: 1.4;
+
+  @include media('<tablet') {
+    font-size: font-size("small");
+  }
+}
+
+@mixin subtitle($color: color('black')) {
   @include font('Montserrat');
 
   color: $color;

@@ -15,7 +15,7 @@ const props = defineProps<{
   >
     <div class="book-detail__header">
       <div class="book-detail__header__main">
-        <h1 class="book-detail__title">
+        <h1 class="book-detail__header__title">
           {{ item.title }}
         </h1>
         <h2 class="book-detail__tiny">
@@ -37,26 +37,29 @@ const props = defineProps<{
         <span class="book-detail__tiny">Upvoted {{ item.upvotes }} times</span>
       </div>
     </div>
-  
-    <img
-      :src="item.cover"
-      class="book-detail__cover"
-    >
-    
-    <h3 class="book-detail__subtitle">
-      Synopsys
-    </h3>
-    <p
-      class="book-detail__synopsis"
-    >
-      {{ item.synopsis }}
-    </p>
 
-    <p class="book-detail__subtitle">
-      Rating: {{ item.rating }}/10
-    </p>
-
+    <div class="book-detail__container">
+      <img
+        :src="item.cover"
+        class="book-detail__cover"
+      >
     
+      <div class="book-detail__content">
+        <h3 class="book-detail__title">
+          Synopsys
+        </h3>
+        <p
+          class="book-detail__synopsis"
+        >
+          {{ item.synopsis }}
+        </p>
+
+        <p class="book-detail__subtitle">
+          Rating: {{ item.rating }}/10
+        </p>
+      </div>
+    </div>
+
     <RouterLink
       class="book-detail__link"
       to="/"
@@ -70,7 +73,7 @@ const props = defineProps<{
   .book-detail {
     background-color: color('background');
     border-radius: $border-radius;
-    padding: 18px;
+    padding: 32px;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
@@ -82,15 +85,35 @@ const props = defineProps<{
       justify-content: space-between;
       align-items: flex-start;
       text-align: left;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
+
+      &__title {
+        @include header(color('accent'));
+      }
     }
-    
+
+    &__container {
+      display: flex;
+      flex-flow: row;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    &__content {
+      margin-left: 32px;
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-start;
+      text-align: left;
+      row-gap: 18px;
+    }
+
     &__title {
-      @include header(color('accent'));
+      @include title(color('accent'));
     }
 
     &__subtitle {
-      @include title(color('black'));
+      @include subtitle(color('black'));
       
       margin: 12px 0;
     }
@@ -104,7 +127,7 @@ const props = defineProps<{
 
       border: 1px solid color('black');
       width: auto;
-      margin: auto auto auto 0;
+      margin: 32px auto auto 0;
       padding: 6px;
       border-radius: $border-radius-mini;
     }
@@ -117,6 +140,7 @@ const props = defineProps<{
       border-radius: $border-radius;
       box-shadow: $box-shadow-mini;
       margin: 0 auto;
+      flex-shrink: 0;
     }
 
     &__synopsis {
@@ -147,6 +171,20 @@ const props = defineProps<{
         display: flex;
         flex-flow: column;
         row-gap: 12px;
+      }
+    }
+    
+    @include media('<=laptop') {
+      &__container {
+        flex-flow: column;
+      }
+
+      &__content {
+        margin-left: 0;
+      }
+
+      &__title {
+        margin-top: 32px;
       }
     }
   }

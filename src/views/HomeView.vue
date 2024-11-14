@@ -31,7 +31,7 @@ onMounted( () => {
   }
 
   .books-list {
-    margin-top: 30px;
+    margin-top: 32px;
   }
 }
 </style>
