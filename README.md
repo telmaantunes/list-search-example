@@ -48,13 +48,13 @@ Using Vue.js, this SPA gets information from a server (explained before) and lis
 ### Install the server dependencies using:
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 or
 
 ```bash
-npm install
+npm install --frozen-lockfile
 ```
 
 ### Compile and Hot-Reload for Development
@@ -109,7 +109,7 @@ pnpm lint
 
 Listing of all available books returned from the API, with some features:
 
-- Text search and highlight (for title and synopsis).
+- Text search and highlight (for title, synopsis and author).
 - Pagination on the books list
 - Synopsis truncated at 200 characters.
 - Book's title and cover link to the book's individual page.
