@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useBooksStore, type Book } from '@/stores/books';
 import { computed } from 'vue';
+import highlightText from '@/utils/highlightText';
 
 const store = useBooksStore();
 
@@ -15,14 +16,6 @@ const ellipsis = computed(() => {
   
   return props.item.synopsis.substring(0,200) + ellipsis;
 });
-
-function highlightText (text: string) {
-  if(!props.highlight) {
-    return text;
-  }
-
-  return text.replace(new RegExp(props.highlight, 'gi'), '<mark>$&</mark>');
-}
 </script>
 
 <template>
@@ -34,13 +27,13 @@ function highlightText (text: string) {
       <RouterLink 
         :to="'/book/' + item.slug"
       >
-        <span v-html="(index + 1) + '. ' + highlightText(item.title)" />
+        <span v-html="(index + 1) + '. ' + highlightText(item.title, props.highlight)" />
       </RouterLink>
     </h2>
 
     
     <h3 class="book-item__tiny">
-      <p v-html="highlightText(item.author)" />
+      <p v-html="highlightText(item.author, props.highlight)" />
       <p>{{ item.rating }}/10</p>
     </h3>
 
@@ -56,7 +49,7 @@ function highlightText (text: string) {
     
     <p
       class="book-item__synopsis"
-      v-html="highlightText(ellipsis)"
+      v-html="highlightText(ellipsis, props.highlight)"
     />
 
     <div class="book-item__bottom">

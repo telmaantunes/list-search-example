@@ -36,6 +36,7 @@ function changePage(value: number) {
       >
         Previous
       </button>
+
       <button
         v-for="page in pages"
         :key="page"
@@ -48,6 +49,7 @@ function changePage(value: number) {
       >
         {{ page }}
       </button>
+      
       <button
         :disabled="pageCount === currentPage"
         :class="[
