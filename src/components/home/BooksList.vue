@@ -4,10 +4,10 @@ import { useBooksStore, type Book } from '@/stores/books';
 import { computed, ref } from 'vue';
 import PaginationSection from '@/components/PaginationSection.vue';
 
+const ITEMS_PER_PAGE = 3;
 const store = useBooksStore();
 const page = ref<number>(1);
 const search = ref<string|undefined>();
-const itemsPerPage = 3;
 
 function filterBySearch (item: Book) {
   const filter = search.value?.toLowerCase();
@@ -29,7 +29,8 @@ const filteredResults = computed(() => {
 });
 
 const visibleBooks = computed(() => {
-  return filteredResults.value.slice((page.value - 1) * 3, ((page.value - 1) * 3) + 3);
+  return filteredResults.value
+    .slice((page.value - 1) * ITEMS_PER_PAGE, ((page.value - 1) * ITEMS_PER_PAGE) + ITEMS_PER_PAGE);
 });
 </script>
 
@@ -37,7 +38,7 @@ const visibleBooks = computed(() => {
   <PaginationSection
     v-model="page"
     :item-count="filteredResults.length"
-    :items-per-page="itemsPerPage"
+    :items-per-page="ITEMS_PER_PAGE"
     class="books-list"
   >
     <div

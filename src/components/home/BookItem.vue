@@ -3,8 +3,10 @@ import { useBooksStore, type Book } from '@/stores/books';
 import { computed } from 'vue';
 import highlightText from '@/utils/highlightText';
 
-const store = useBooksStore();
+const MAX_LENGTH = 200;
+const MAX_RATING = 10;
 
+const store = useBooksStore();
 const props = defineProps<{
   item: Book,
   index: number
@@ -12,9 +14,9 @@ const props = defineProps<{
 }>();
 
 const ellipsis = computed(() => {
-  const ellipsis = props.item.synopsis.length > 200 ? '...' : '';
+  const ellipsis = props.item.synopsis.length > MAX_LENGTH ? '...' : '';
   
-  return props.item.synopsis.substring(0,200) + ellipsis;
+  return props.item.synopsis.substring(0,MAX_LENGTH) + ellipsis;
 });
 </script>
 
@@ -34,7 +36,7 @@ const ellipsis = computed(() => {
     
     <h3 class="book-item__tiny">
       <p v-html="highlightText(item.author, props.highlight)" />
-      <p>{{ item.rating }}/10</p>
+      <p>{{ item.rating }}/{{ MAX_RATING }}</p>
     </h3>
 
     <RouterLink 
